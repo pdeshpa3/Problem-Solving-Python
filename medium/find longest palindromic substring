@@ -1,0 +1,17 @@
+/*
+Input: s = "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+*/
+
+max = 0
+for i in range(0, len(st)):
+    for j in range(i,len(st)+1):
+        st2=(st[i:j+1])
+        rev = (st2[::-1])
+        if rev == st2:
+            if max < len(st2):
+                print(f"isPali {rev} {st2}")
+                max = len(st2)
+        else:
+            continue
