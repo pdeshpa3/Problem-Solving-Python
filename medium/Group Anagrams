@@ -1,0 +1,26 @@
+'''
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+'''
+
+
+
+
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        mapp = {}
+        list2 = []
+        for word in strs:
+            sortedstr = ''.join(sorted(word))
+            if sortedstr in mapp:
+                list1 = mapp[sortedstr]
+                list1.append(word)
+            else:
+                mapp[sortedstr] = [word]
+        
+        for (k,v) in mapp.items():
+            list2.append(v)
+        return list2
