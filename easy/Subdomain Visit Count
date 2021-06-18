@@ -1,0 +1,23 @@
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        
+        dict1 = {}
+        parts = []
+        result = []
+        
+        for i in range(0, len(cpdomains)):
+            domain = cpdomains[i]
+            parts = domain.split(" ")
+            number = int(parts[0])
+            
+            strpart = parts[1].split('.')
+            for j in range(0, len(strpart)):
+                string = ".".join(strpart[j:len(strpart)])
+                if string in dict1:
+                    dict1[string] += number
+                else:
+                    dict1[string] = number
+        
+        
+        for k in dict1:
+            result.append(f"{dict1[k]} {k}") 
