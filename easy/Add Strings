@@ -1,0 +1,29 @@
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        
+        l1 = list(num1)
+        l2 = list(num2)
+        carry = 0
+        tail1 = len(l1) - 1
+        tail2 = len(l2) - 1
+        res = []
+        
+        while(tail1 >= 0 or tail2 >= 0):
+            dig1 = l1[tail1] if tail1 >= 0 else  0
+            dig2 = l2[tail2] if tail2 >= 0 else  0
+                
+            summ = int(dig1) + int(dig2) + carry
+            if summ>= 10:
+                carry = 1
+            else:
+                carry = 0
+            res.insert(0, summ%10)
+            tail1 -= 1
+            tail2 -= 1
+        
+        if carry == 1:
+            res.insert(0, 1)
+            
+        listToStr = ''.join([str(elem) for elem in res])
+        return listToStr
+        
